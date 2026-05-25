@@ -33,6 +33,7 @@ def get_courses():
 @app.post("/courses")
 def add_course(course: Course):
     courses = load_courses()
-    courses.append(new_course)
+    new_course_dict = course.model_dump() 
+    courses.append(new_course_dict)
     save_courses(courses)
-    return {"message": "수강기록이 추가되었습니다.", "data": new_course}
+    return {"message": "추가완료.", "data": new_course_dict}
